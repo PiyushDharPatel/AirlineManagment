@@ -5,6 +5,7 @@ import Profile from './components/Profile/Profile';
 import SignIn from './components/Login/SignIn';
 import Login from './components/Login/Login';
 import Flights from './components/Flights/Flights';
+import FlightOverview from './components/FlightOverview/FlightOverview';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/SignIn" element={<SignIn/>} />
         <Route exact path='/profile' element={<Profile/>}/>
         <Route exact path='/flights' element={<Flights/>}/>
+        <Route exact path='/flights/:id' element={<FlightOverview/>}/>
       </Routes>
     </div>
     </Router>
