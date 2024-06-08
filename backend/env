@@ -1,3 +1,0 @@
-PORT=5000;
-CONNECTION_STRING="mongodb+srv://santanu2020barik:santanu123@cluster0.ulv0rzx.mongodb.net/AirlineManagement?retryWrites=true&w=majority"
-Secret="Top_Top_Secret"
