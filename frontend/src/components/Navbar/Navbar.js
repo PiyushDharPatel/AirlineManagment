@@ -65,7 +65,7 @@ useEffect(()=>{
   }
 
   return (
-    <div className='w-full select-none fixed bg-gradient-to-r items-center px-5 from-purple-600 to-pink-500 h-[4.5vw] flex flex-row'>
+    <div className='w-full select-none z-10 fixed bg-gradient-to-r items-center px-5 from-purple-600 to-pink-500 h-[4.5vw] flex flex-row'>
         
       
      <Link className=' w-54 flex flex-row ' to="/">
