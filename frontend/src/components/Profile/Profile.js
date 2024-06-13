@@ -90,7 +90,7 @@ const Profile = () => {
     }
 
   }
- 
+
   const handleMail = () => {
     api.get("/sendMail").then((res) => {
       if (res.data.success) {
@@ -255,7 +255,7 @@ const Profile = () => {
             to="profile"
             spy={true}
             smooth={true}
-            offset={0}
+            offset={-200}
             duration={500}
             
           >

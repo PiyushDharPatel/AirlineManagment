@@ -5,6 +5,10 @@ import Profile from './components/Profile/Profile';
 import SignIn from './components/Login/SignIn';
 import Login from './components/Login/Login';
 import Flights from './components/Flights/Flights';
+import Booking from './components/Booking/Booking';
+import FlightOverview from './components/FlightOverview/FlightOverview';
+import Seats from './components/FlightOverview/Seats';
+import Payment from './components/Payment/PaymentFe';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
@@ -18,6 +22,10 @@ function App() {
         <Route exact path="/SignIn" element={<SignIn/>} />
         <Route exact path='/profile' element={<Profile/>}/>
         <Route exact path='/flights' element={<Flights/>}/>
+        <Route exact path='/booking' element={<Booking/>}/>
+        <Route exact path='/seats' element={<Seats/>}/>
+        <Route exact path='/flights/one' element={<FlightOverview/>}/>
+        <Route exact path='/payment' element={<Payment amount={400}/>}/>
       </Routes>
     </div>
     </Router>
