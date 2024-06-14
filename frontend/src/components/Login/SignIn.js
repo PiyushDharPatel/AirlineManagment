@@ -129,7 +129,7 @@ const SignIn = () => {
 const check=()=>{
   const token = localStorage.getItem('token')
   if (!token) {
-    navigate("/")
+    
   } else {
     api.get('/logged', {
       headers: {
@@ -144,13 +144,12 @@ const check=()=>{
 
       } else {
         localStorage.removeItem('token')
-        navigate("/")
+       
 
       }
     }).catch((err) => {
       localStorage.removeItem('token')
-      navigate("/")
-
+   
     })
   }
 }
