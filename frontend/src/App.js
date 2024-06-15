@@ -10,7 +10,10 @@ import FlightOverview from './components/FlightOverview/FlightOverview';
 import Seats from './components/FlightOverview/Seats';
 import Payment from './components/Payment/PaymentFe';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Travel from './components/Travel/Travel';
 function App() {
+  
   return (
     <Router>
     <div className="">
@@ -26,6 +29,7 @@ function App() {
         <Route exact path='/seats' element={<Seats/>}/>
         <Route exact path='/flights/one' element={<FlightOverview/>}/>
         <Route exact path='/payment' element={<Payment amount={400}/>}/>
+        <Route exact path='/travel' element={<Travel/>}/>
       </Routes>
     </div>
     </Router>

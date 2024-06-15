@@ -3,6 +3,7 @@ const User=require("../models/user.Model")
 const {hash,compare}=require('bcrypt')
 const dotenv=require("dotenv").config();
 const jwt=require('jsonwebtoken')
+const Travel=require('../models/Travelhistory.Model')
 const createUser=asyncHandler(async(req,res)=>{
     const {username, email,password}=req.body;
     
@@ -133,4 +134,9 @@ const upPass=asyncHandler(async(req,res)=>{
             res.status(200).send({success:true})
         }
  })
-module.exports={createUser,checkUser,upUser,upPass,gettraveller,imgup}
+ const getTravel=asyncHandler(async(req,res)=>{
+    const {username}=req.body
+    const all=await Travel.find({username:username})
+    return res.status(200).send(all)
+ })
+module.exports={createUser,getTravel,checkUser,upUser,upPass,gettraveller,imgup}
