@@ -22,7 +22,7 @@ const FlightDetail = (props) => {
         }
     }
     return (
-        <>{ispop3 && <div onClick={(e) => { const r = box.current; if (!(e.target === box.current || r.contains(e.target))) { setIspop3(false) } }} className=' flex z-10 fixed top-0 left-0 h-full w-full bg-black bg-opacity-20 items-center justify-center'>
+        <>{ispop3 && <div onClick={(e) => { const r = box.current; if (!(e.target === box.current || r.contains(e.target))) { setIspop3(false) } }} className=' flex z-10 fixed top-0 left-0 py-10 h-full w-full overflow-scroll bg-black bg-opacity-20 items-center justify-center'>
             <div ref={box} className='bg-white w-[60vw] rounded-xl shadow-lg shadow-gray-600 px-8 py-5 flex flex-col h-auto'>
                 <h1 className='text-2xl self-start font-semibold'>Reviews</h1>
                 <div className='flex mt-1 flex-col p-1'>
@@ -78,7 +78,7 @@ const FlightDetail = (props) => {
 
                     <div className="h-[125px] w-[250px] mt-3 flex flex-col justify-center items-end p-2">
                         <div className="text-2xl font-semibold text-black">&#8377;{(props.type === 'Business') ? props.data.busiprice : (props.type === 'Premium Economy') ? props.data.premprice : props.data.price}</div>
-                        <div className='flex mt-2 font-semibold text-green-500 flex-row gap-1'>{props.data.ratings} <div className="flex mt-1">{(props.data.ratings >= 1) ? <FaStar /> : <FaRegStar />} {(props.data.ratings >= 2) ? <FaStar /> : <FaRegStar />}{(props.data.ratings >= 3) ? <FaStar /> : <FaRegStar />}{(props.data.ratings >= 4) ? <FaStar /> : <FaRegStar />}{(props.data.ratings >= 5) ? <FaStar /> : <FaRegStar />}</div>
+                        <div className='flex mt-2 font-semibold text-green-500 flex-row gap-1'>{parseFloat(props.data.ratings.toFixed(2))} <div className="flex mt-1">{(props.data.ratings >= 1) ? <FaStar /> : <FaRegStar />} {(props.data.ratings >= 2) ? <FaStar /> : <FaRegStar />}{(props.data.ratings >= 3) ? <FaStar /> : <FaRegStar />}{(props.data.ratings >= 4) ? <FaStar /> : <FaRegStar />}{(props.data.ratings >= 5) ? <FaStar /> : <FaRegStar />}</div>
 
                         </div>
                         <div onClick={() => setIspop3(true)} className=" font-semibold hover:underline cursor-pointer text-amber-300">See reviews</div>

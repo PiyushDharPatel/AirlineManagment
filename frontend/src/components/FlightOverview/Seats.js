@@ -27,15 +27,15 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
             }
             else if((seats[k].price)<=300){
                 j='bg-green-700'
-                console.log(300)
+                
         }
         else if((seats[k].price)<=500){
             j='bg-blue-300'
-            console.log(500)
+            
     }
     else{
         j='bg-purple-500'
-        console.log(600)
+        
 }
         if (q.includes(j)) {
             //console.log('green')
@@ -49,7 +49,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
                 array.push(e.currentTarget)
                 arrayc.push(j)
                 arrayp.push((seats[k].price))
-                console.log(array)
                 setSeatsk(array)
                 setSeatsc(arrayc)
                 setSeatsp(arrayp)
@@ -85,7 +84,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
                 setrerender(!rerender)
             }
         } else {
-            console.log('blue')
             e.currentTarget.classList.toggle('bg-blue-500');
             e.currentTarget.classList.toggle(j);
             let array = seatsk
@@ -125,7 +123,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
         setPassengerInfoList(arr)
         setPass(arr)
         setrerender(!rerender)
-        console.log(arr)
     }
         else{
             seatsk[0].classList.value='bg-yellow-500 w-10 text-white hover:brightness-75 cursor-pointer hover:shadow-sm hover:shadow-black rounded-md h-10'
@@ -142,7 +139,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
                 setPassengerInfoList(arr)
                 setPass(arr)
                 setrerender(!rerender)
-                console.log(arr)
         }
     }else{
         e.currentTarget.classList.value='bg-yellow-500 w-10 text-white hover:brightness-75 cursor-pointer hover:shadow-sm hover:shadow-black rounded-md h-10'
@@ -155,7 +151,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
             setPassengerInfoList(arr)
             setPass(arr)
             setrerender(!rerender)
-            console.log(arr)
     }
     
     }
@@ -164,7 +159,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
         let q = p.split(' ')
 
         if(q.includes('bg-blue-700')){
-            console.log(seatsk.length)
             if (seatsk.length < num) {
                 let array = seatsk
                 
@@ -176,7 +170,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
         setPassengerInfoList(arr)
         setPass(arr)
         setrerender(!rerender)
-        console.log(arr)
     
     }
         else{
@@ -195,7 +188,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
                 setPassengerInfoList(arr)
                 setPass(arr)
                 setrerender(!rerender)
-                console.log(arr)
         }
     }else{
         e.currentTarget.classList.value='bg-blue-700 w-10 text-white hover:brightness-75 cursor-pointer hover:shadow-sm hover:shadow-black rounded-md h-10'
@@ -208,7 +200,6 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
             setPassengerInfoList(arr)
             setPass(arr)
             setrerender(!rerender)
-            console.log(arr)
     }
 
     }
@@ -258,12 +249,12 @@ const Seats = ({seats,seatsPrice,setSeatsPrice,type,num,passenger_info_list,setP
                 }
     }else{
         if(lisb.includes(item.seatNumber)){
-            listItems.push(<button onClick={(e) => handleBusi(e)} className='bg-red-500 w-10 text-white rounded-md cursor-not-allowed h-10' key={index}>{item.seatNumber}</button>)
+            listItems.push(<button className='bg-red-500 w-10 text-white rounded-md cursor-not-allowed h-10' key={index}>{item.seatNumber}</button>)
             
         }else if(lisl.includes(item.seatNumber)){
             listItems.push(<div className='w-10 h-10'></div>)}
             else if(lisp.includes(item.seatNumber)){
-                listItems.push(<button onClick={(e) => handlePrem(e)} className='bg-red-500 w-10 text-white rounded-md cursor-not-allowed h-10' key={index}>{item.seatNumber}</button>)
+                listItems.push(<button className='bg-red-500 w-10 text-white rounded-md cursor-not-allowed h-10' key={index}>{item.seatNumber}</button>)
             }else{
                 if (!item.isAvailable) {
                     listItems.push(<button className='bg-red-500 w-10 text-white rounded-md cursor-not-allowed h-10' key={index}>{item.seatNumber}</button>)

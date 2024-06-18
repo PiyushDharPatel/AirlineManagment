@@ -11,6 +11,7 @@ const Travel = () => {
   const [fid,setFid]=useState()
   const [review,setreview]=useState('')
   const [rating,setrating]=useState()
+  const [isr,setIsr]=useState(false)
   const [departure_date,setDeparture_date]=useState()
   const [dept_time,setDept_time]=useState()
   const [complete,setComplete]=useState(true)
@@ -30,7 +31,7 @@ const Travel = () => {
        
         if (res.data.success) {
           setUsername(res.data.username)
-          api.post('/api/user/gettravel',{username:res.data.username}).then((res)=>{console.log(res.data);setTravelHistoryData(res.data)}).catch((err)=>console.log(err))
+          api.post('/api/user/gettravel',{username:res.data.username}).then((res)=>{setTravelHistoryData(res.data)}).catch((err)=>console.log(err))
           
             
   
@@ -47,9 +48,9 @@ const Travel = () => {
     }
   }
   const feedback=()=>{
-      api.post('/api/rating',{id:fid,rating:rating?rating:0,review:{username:username,rating:rating,review:review}}).then((res)=>{setFid();setrating('');setreview('');setShowfeedback(false)}).catch((err)=>{console.log(err)})
+      api.post('/api/rating',{id:fid,rating:rating?rating:0,review:{username:username,rating:rating,review:review}}).then((res)=>{setFid();setrating('');setreview('');setIsr(!isr);setShowfeedback(false)}).catch((err)=>{console.log(err)})
   }
-  useEffect(() => check(), [])
+  useEffect(() => check(), [isr])
   // const travelHistoryData = [
   //   {
   //     airline:'Indigo',

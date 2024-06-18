@@ -6,11 +6,12 @@ import { useNavigate } from 'react-router-dom'
 const UpdateFlight = () => {
     const navigate=useNavigate()
     const check=()=>{
+      
         const token = localStorage.getItem('token')
         if (!token) {
           navigate("/")
         } else {
-          api.get('/logged/company/staff', {
+          api.get('/logged/manager', {
             headers: {
               Authorization: token
             }
@@ -22,15 +23,53 @@ const UpdateFlight = () => {
                 
     
             } else {
-              localStorage.removeItem('token')
-              navigate("/")
+              api.get('/logged/company/staff', {
+                headers: {
+                  Authorization: token
+                }
+              }).then(res => {
+               
+                if (res.data.success) {
+                  
+                
+                    
+        
+                } else {
+                  localStorage.removeItem('token')
+                  navigate("/")
+        
+                }
+              }).catch((err) => {
+                localStorage.removeItem('token')
+                navigate("/")
+        
+              })
     
             }
           }).catch((err) => {
-            localStorage.removeItem('token')
-            navigate("/")
-    
+            api.get('/logged/company/staff', {
+              headers: {
+                Authorization: token
+              }
+            }).then(res => {
+             
+              if (res.data.success) {
+                
+               
+                  
+      
+              } else {
+                localStorage.removeItem('token')
+                navigate("/")
+      
+              }
+            }).catch((err) => {
+              localStorage.removeItem('token')
+              navigate("/")
+      
+            })
           })
+          
         }
       }
       useEffect(() => check(), [])

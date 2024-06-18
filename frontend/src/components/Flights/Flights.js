@@ -72,7 +72,7 @@ const [data2,setData2] = useState([]);
       mainHandler();
   },[Em,Mo,Af,Ni,upperLimit]);
 useEffect(()=>{
-  api.post('/api/getflights',{from:from,to:to,date:dept,premium:(type==='Economy')?false:true}).then((res)=>{console.log(res);setData(res.data.arr);setData2(res.data.arr)}).catch((err)=>{console.log(err)})
+  api.post('/api/getflights',{from:from,to:to,date:dept,premium:(type==='Economy')?false:true}).then((res)=>{setData(res.data.arr);setData2(res.data.arr)}).catch((err)=>{console.log(err)})
 
 },[from])
 function isTimeRange(range,time){
@@ -94,7 +94,7 @@ function mainHandler(){
   if(Em){
     
     for(const obj of data2){
-      console.log(obj.dept_time)
+      
         if(isTimeRange(["00:00","06:00"],obj.dept_time))
           dummyData.push(obj);
     }
@@ -298,7 +298,7 @@ function resetHandler(){
             
             {
               data.length > 0 ? data.map((item,index)=>(
-              (<FlightDetail data={{...data[index]}} eld={eld} type={type} way={way} arr={arr} df={df} from={to} to={from} chi={chi} inf={inf} setSearchParams={setSearchParams} ></FlightDetail>))):
+              (((new Date(dept+'T'+item.dept_time)).getTime()-(new Date()).getTime()>1000*60*60*6)&&<FlightDetail data={{...data[index]}} eld={eld} type={type} way={way} arr={arr} df={df} from={to} to={from} chi={chi} inf={inf} setSearchParams={setSearchParams} ></FlightDetail>))):
               (
                 <div className='hover:border-sky-600 shadow-md hover:border-2 rounded mt-2 mr-2 ml-4 w-[905px] h-[400px] flex flex-col gap-x-2 justify-center items-center text-3xl font-medium'>
                     <div> No FLights Found! </div>

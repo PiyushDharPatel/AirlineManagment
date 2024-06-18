@@ -11,7 +11,7 @@ const Add = () => {
         if (!token) {
           navigate("/")
         } else {
-          api.get('/logged/company/staff', {
+          api.get('/logged/manager', {
             headers: {
               Authorization: token
             }
@@ -23,15 +23,53 @@ const Add = () => {
                 
     
             } else {
-              localStorage.removeItem('token')
-              navigate("/")
+              api.get('/logged/company/staff', {
+                headers: {
+                  Authorization: token
+                }
+              }).then(res => {
+               
+                if (res.data.success) {
+                  
+                  
+                    
+        
+                } else {
+                  localStorage.removeItem('token')
+                  navigate("/")
+        
+                }
+              }).catch((err) => {
+                localStorage.removeItem('token')
+                navigate("/")
+        
+              })
     
             }
           }).catch((err) => {
-            localStorage.removeItem('token')
-            navigate("/")
-    
+            api.get('/logged/company/staff', {
+              headers: {
+                Authorization: token
+              }
+            }).then(res => {
+             
+              if (res.data.success) {
+                
+              
+                  
+      
+              } else {
+                localStorage.removeItem('token')
+                navigate("/")
+      
+              }
+            }).catch((err) => {
+              localStorage.removeItem('token')
+              navigate("/")
+      
+            })
           })
+          
         }
       }
       useEffect(() => check(), [])
@@ -173,7 +211,7 @@ const Add = () => {
          <div className='w-96 h-16 flex flex-col'>
         <label className='font-semibold' for='company'>Flight Id</label>
       <input onBlur={()=>checki()} value={id} onChange={(e)=>{setId(e.target.value)}} className='h-12 border-2 border-purple-600 rounded-md px-2 w-96' id='company' type='text' placeholder='ABC Flights' />
-      {notMsg&&<div className='text-red-500 mt-16 fixed'>ID Already in use</div>}
+      {notMsg&&<div className='text-red-500 -mt-4 fixed'>ID Already in use</div>}
 
       </div>
             <div className='w-96 h-16 flex flex-col'>

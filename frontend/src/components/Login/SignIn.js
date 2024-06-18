@@ -5,11 +5,14 @@ import { useState,useEffect } from 'react';
 import api from '../API/api.js'
 import Navbar from '../Navbar/Navbar.js'
 import { useNavigate } from 'react-router-dom';
+import {getToken} from 'firebase/messaging';
+import { messaging } from '../../firebase.js';
 const SignIn = () => {
     const [isFocus, setIsFocus] = useState(false);
     const [isFocusu, setIsFocusu] = useState(false);  
     const [isFocusp, setIsFocusp] = useState(false);   
     const [isFocusn, setIsFocusn] = useState(false);  
+    const [dtoken,setDtoken]=useState()
     const [cango,setCanGo]=useState(true)
     const [cangon,setCanGoN]=useState(true)
     const [cangor,setCanGoR]=useState(true)
@@ -25,6 +28,15 @@ const SignIn = () => {
     const input2=useRef()
     const input3=useRef()
     const input4=useRef()
+    async function requestPermission(){
+      const permission=await Notification.requestPermission()
+      if(permission==='granted'){
+        const token=await getToken(messaging, { vapidKey: 'BNTMZX1beK8R5v7O1LBG966gXyVeoYIgqo_gJF8yajvbaUm9e8AORXuNJ7466Hh6VfsNVlGfrqSF-DMw9nMacnU' });
+        setDtoken(token)
+      }else if(permission==='denied'){
+        alert("You denied notification, please enable notification");
+      }
+    }
     const handleChange=(e,s)=>{
       if(s==='n'){
         setUserName(e.target.value)
@@ -55,7 +67,7 @@ const SignIn = () => {
                 'Content-Type': 'application/json'
             }
         }).then((res)=>{
-            console.log(res.data)
+            
             if(res.data.success){
             setCanGo(false)
             setNotMsg('Given Mail already Registered')}
@@ -79,7 +91,6 @@ const SignIn = () => {
             'Content-Type': 'application/json'
         }
     }).then((res)=>{
-        console.log(res.data)
         if(res.data.success){
           
           setCanGoN(false)
@@ -90,7 +101,7 @@ const SignIn = () => {
       }).catch((err)=>{})
     
   }else{
-    setCanGo(true)
+    setCanGoN(true)
   }
     }
     const handleRep=()=>{
@@ -108,7 +119,8 @@ const SignIn = () => {
       api.post('/api/user/register',{
           email:userMail,
           username:userName,
-          password:userPass
+          password:userPass,
+          dtoken:dtoken
       },{
         headers: {
             'Content-Type': 'application/json'
@@ -153,7 +165,7 @@ const check=()=>{
     })
   }
 }
-useEffect(() => check(), [])
+useEffect(() =>{ requestPermission();  check()}, [])
   return (
     <div>
       <Navbar/>

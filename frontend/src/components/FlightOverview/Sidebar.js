@@ -7,13 +7,11 @@ const Sidebar = (props) => {
         let map1=new Map()
         let arr=[]
 
-              console.log([props.passenger_info_list.length,props.passengers_num])
         if(props.passenger_info_list.length!==props.passengers_num){
             window.alert("Enter all the credentials for all passengers")
             return 
         }
         props.passenger_info_list.forEach((element)=>{
-            console.log(element)
             if(map1.has(element.number)){
                 ntru='a'
             
