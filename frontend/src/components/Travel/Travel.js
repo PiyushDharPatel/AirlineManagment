@@ -14,7 +14,7 @@ const Travel = () => {
   const [isr,setIsr]=useState(false)
   const [departure_date,setDeparture_date]=useState()
   const [dept_time,setDept_time]=useState()
-  const [complete,setComplete]=useState(true)
+  const [complete,setComplete]=useState(false)
   const [username,setUsername]=useState('')
   const [selectedData, setSelectedData] = useState(null); // Store the selected data here
   const navigate=useNavigate()
