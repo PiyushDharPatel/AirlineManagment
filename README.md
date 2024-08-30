@@ -1,9 +1,9 @@
 
 # AirlineManagment
 TECH STACK USED
-1.MERN 
+1.Mongodb, Express.js, React.js,Node.js
 2.Firebase cloud messaging
-3.JWT
+3.JWT,Bcrypt
 4.Razorpay payment gateway
 5.Bcrypt
 
