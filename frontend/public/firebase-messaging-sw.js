@@ -4,7 +4,7 @@ importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js')
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js');
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAUxVkjvxnVW7yEX9I2GTUVCXo7aHxKEYg",
+  apiKey: process.env.REACT_APP_apiKey,
   authDomain: "notification-bf689.firebaseapp.com",
   projectId: "notification-bf689",
   storageBucket: "notification-bf689.appspot.com",
