@@ -1,0 +1,20 @@
+{
+  "name": "airlinemanagment",
+  "version": "1.0.0",
+  "description": "TECH STACK USED\r 1.Mongodb, Express.js, React.js,Node.js\r 2.Firebase cloud messaging\r 3.JWT,Bcrypt\r 4.Razorpay payment gateway\r 5.Bcrypt",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PiyushDharPatel/AirlineManagment.git#main"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PiyushDharPatel/AirlineManagment/issues"
+  },
+  "homepage": "https://github.com/PiyushDharPatel/AirlineManagment/tree/main#readme"
+}
