@@ -3,6 +3,7 @@
 //@access public
 const asyncHandler=require("express-async-handler");
 //automatic execute try catch block as middle ware for error handling
+// added controller
 
 //Importing Mongoose model
 const User=require("../models/user.Model");
